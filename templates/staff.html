@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff — Smart Food Management</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body class="min-h-screen pb-16">
+  <div id="toast" class="hidden"></div>
+
+  <header class="bg-white border-b border-gray-200 sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">🍽️</span>
+        <div>
+          <div class="font-bold text-gray-900 leading-tight">Smart Food Management</div>
+          <div class="text-xs text-gray-500" id="userLine">Staff</div>
+        </div>
+      </div>
+      <button class="btn-secondary text-sm" onclick="logout()">Log out</button>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6 space-y-8">
+
+    <section class="flex flex-wrap items-end gap-3">
+      <div>
+        <label class="text-xs font-semibold text-gray-600 block mb-1">Date</label>
+        <input type="date" id="dateInput">
+      </div>
+      <div class="flex gap-2" id="mealTypeTabs"></div>
+    </section>
+
+    <section id="mealSection">
+      <div class="card p-6"><div class="skeleton h-40"></div></div>
+    </section>
+
+    <section>
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-base font-bold text-gray-900">Analytics</h2>
+        <select id="analyticsFilter" class="w-40">
+          <option value="">All meal types</option>
+          <option value="breakfast">Breakfast</option>
+          <option value="lunch">Lunch</option>
+          <option value="dinner">Dinner</option>
+        </select>
+      </div>
+      <div id="analyticsGrid" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/staff.js') }}"></script>
+</body>
+</html>
